@@ -1,0 +1,6 @@
+flask
+flask-cors
+pillow
+numpy
+scikit-learn
+joblib
