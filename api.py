@@ -7,7 +7,7 @@ import io
 import base64
 
 app = Flask(__name__)
-CORS(app, origins=['http://localhost:5174'])
+CORS(app, origins=['http://localhost:5173', 'http://localhost:5174'])
 
 # Load the trained model
 pipeline = joblib.load('tumor_detector.pkl')
