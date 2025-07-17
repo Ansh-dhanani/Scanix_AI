@@ -11,7 +11,7 @@ A React frontend connected to a Flask API for brain tumor detection using machin
 
 2. Install Node.js dependencies:
    ```
-   cd tumor-frontend
+   cd neuroscan-frontend
    npm install
    ```
 
@@ -30,7 +30,7 @@ start.bat
 
 2. Start React frontend:
    ```
-   cd tumor-frontend
+   cd neuroscan-frontend
    npm run dev
    ```
 
