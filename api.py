@@ -12,7 +12,7 @@ app = Flask(__name__)
 # Configure CORS for production and development
 if os.environ.get('FLASK_ENV') == 'production':
     # Replace with your actual Netlify domain
-    CORS(app, origins=['https://scanix-ai.netlify.app', 'https://*.netlify.app'])
+    CORS(app, origins=['https://scanix-ai.netlify.app', 'https://*.netlify.app', 'https://scanix-ai-frontend.netlify.app'])
 else:
     CORS(app, origins=['http://localhost:5173', 'http://localhost:5174'])
 
