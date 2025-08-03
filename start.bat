@@ -1,34 +1,47 @@
 @echo off
-echo Starting Scanix AI Application...
+color 0b
+mode con: cols=100 lines=30
+title Scanix AI - Brain Tumor Detection System
 
-echo Installing Python dependencies...
-pip install -r requirements.txt
-
-echo Starting Flask API...
-start "Scanix API" python api.py
-
-echo Starting React Frontend...
+echo.
+echo                 ███████╗ ██████╗ █████╗ ███╗   ██╗██╗██╗  ██╗    █████╗ ██╗
+echo                 ██╔════╝██╔════╝██╔══██╗████╗  ██║██║╚██╗██╔╝   ██╔══██╗██║
+echo                 ███████╗██║     ███████║██╔██╗ ██║██║ ╚███╔╝    ███████║██║
+echo                 ╚════██║██║     ██╔══██║██║╚██╗██║██║ ██╔██╗    ██╔══██║██║
+echo                 ███████║╚██████╗██║  ██║██║ ╚████║██║██╔╝ ██╗   ██║  ██║██║
+echo                 ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝   ╚═╝  ╚═╝╚═╝
+echo.
+echo                          🧠 AI-Powered Brain Tumor Detection System 🧠
+echo                                    Built with ❤️  by Manan ^& Ansh
+echo.
+echo ════════════════════════════════════════════════════════════════════════════════════════
+echo.
+ping localhost -n 2 >nul
+echo [⚡] Initializing Scanix AI System...
+ping localhost -n 1 >nul
+echo [🔥] Loading ML Models...
+ping localhost -n 1 >nul
+echo [🚀] Starting Backend Services...
+ping localhost -n 1 >nul
+echo [✨] Preparing Frontend Interface...
+ping localhost -n 1 >nul
+echo.
+echo ════════════════════════════════════════════════════════════════════════════════════════
+echo.
+echo [🐍] Starting Flask API Server...
+start cmd /k "title Flask API Server & color 0a & python api.py"
+ping localhost -n 2 >nul
+echo [⚛️ ] Starting React Development Server...
 cd frontend
-if exist package.json (
-    npm install
-    start "Frontend" cmd /k "npm run dev"
-) else (
-    echo Error: package.json not found in frontend directory
-)
-cd ..
-
+start cmd /k "title React Frontend & color 0e & npm run dev"
 echo.
-echo Waiting for services to start...
-timeout /t 5 /nobreak >nul
-
-echo ================================
-echo   SCANIX AI IS READY!
-echo ================================
-echo API Server: http://localhost:5000
-echo Frontend:   http://localhost:5173
+echo ════════════════════════════════════════════════════════════════════════════════════════
 echo.
-echo Opening browser...
-start http://localhost:5173
+echo                                   🎯 SYSTEM READY! 🎯
 echo.
-echo Press any key to exit...
-pause
+echo                        📡 Flask API: http://localhost:5000
+echo                        🌐 React App: http://localhost:5173
+echo.
+echo                              Press any key to continue...
+echo ════════════════════════════════════════════════════════════════════════════════════════
+pause >nul
