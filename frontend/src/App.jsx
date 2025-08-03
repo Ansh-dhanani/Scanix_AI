@@ -71,23 +71,23 @@ function App() {
     <div className="w-full max-w-2xl mx-auto space-y-8">
       {/* Header */}
       <div className="text-center space-y-4">
-        <div className="flex items-center justify-center space-x-3">
+        <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-3">
           <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl">
             <Brain className="h-8 w-8 text-white" />
           </div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             Scanix AI
           </h1>
         </div>
-        <p className="text-gray-400 text-lg max-w-xl mx-auto">
-          Advanced Brain tumor detection using state-of-the-art machine learning technology
+        <p className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto px-4">
+          AI-powered brain tumor detection with 98% accuracy using machine learning
         </p>
       </div>
 
       {/* Upload Section */}
       <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 shadow-2xl">
         <div className="space-y-6">
-          <h2 className="text-2xl font-semibold text-center text-white flex items-center justify-center space-x-2">
+          <h2 className="text-xl sm:text-2xl font-semibold text-center text-white flex flex-col sm:flex-row items-center justify-center space-y-1 sm:space-y-0 sm:space-x-2">
             <Upload className="h-6 w-6" />
             <span>Upload Medical Scan</span>
           </h2>
@@ -105,10 +105,10 @@ function App() {
               className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-white/20 rounded-2xl hover:border-white/40 transition-all cursor-pointer group"
             >
               <Upload className="h-8 w-8 text-gray-400 group-hover:text-white mb-2" />
-              <span className="text-gray-400 group-hover:text-white">
+              <span className="text-gray-400 group-hover:text-white text-center px-2">
                 Click to upload or drag and drop
               </span>
-              <span className="text-sm text-gray-500 mt-1">
+              <span className="text-sm text-gray-500 mt-1 text-center">
                 PNG, JPG, JPEG up to 10MB
               </span>
             </label>
@@ -182,6 +182,53 @@ function App() {
         </div>
       </div>
 
+      {/* Test Images */}
+      <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 shadow-2xl">
+        <h3 className="text-xl font-semibold text-white mb-4 text-center">Try Sample Images</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="text-center">
+            <img 
+              src="/test_file1.png" 
+              alt="Test Brain Scan 1" 
+              className="w-full h-32 object-cover rounded-lg border border-white/20 cursor-pointer hover:border-white/40 transition-all"
+              onClick={() => {
+                fetch('/test_file1.png')
+                  .then(res => res.blob())
+                  .then(blob => {
+                    const file = new File([blob], 'test_file1.png', { type: 'image/png' })
+                    setSelectedFile(file)
+                    const reader = new FileReader()
+                    reader.onload = (e) => setPreview(e.target.result)
+                    reader.readAsDataURL(file)
+                    setResult(null)
+                  })
+              }}
+            />
+            <p className="text-gray-400 text-sm mt-2">Sample Scan 1</p>
+          </div>
+          <div className="text-center">
+            <img 
+              src="/test_file2.png" 
+              alt="Test Brain Scan 2" 
+              className="w-full h-32 object-cover rounded-lg border border-white/20 cursor-pointer hover:border-white/40 transition-all"
+              onClick={() => {
+                fetch('/test_file2.png')
+                  .then(res => res.blob())
+                  .then(blob => {
+                    const file = new File([blob], 'test_file2.png', { type: 'image/png' })
+                    setSelectedFile(file)
+                    const reader = new FileReader()
+                    reader.onload = (e) => setPreview(e.target.result)
+                    reader.readAsDataURL(file)
+                    setResult(null)
+                  })
+              }}
+            />
+            <p className="text-gray-400 text-sm mt-2">Sample Scan 2</p>
+          </div>
+        </div>
+      </div>
+
       {/* Features */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
@@ -197,7 +244,7 @@ function App() {
             <Shield className="h-6 w-6 text-purple-400" />
           </div>
           <h3 className="font-semibold text-white mb-2">Secure & Private</h3>
-          <p className="text-gray-400 text-sm">Your data never leaves your device</p>
+          <p className="text-gray-400 text-sm">Secure cloud processing with no data storage</p>
         </div>
         
         <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
@@ -205,7 +252,7 @@ function App() {
             <Brain className="h-6 w-6 text-green-400" />
           </div>
           <h3 className="font-semibold text-white mb-2">AI-Powered</h3>
-          <p className="text-gray-400 text-sm">Advanced deep learning algorithms</p>
+          <p className="text-gray-400 text-sm">Machine learning with 98% accuracy</p>
         </div>
       </div>
     </div>
@@ -214,11 +261,11 @@ function App() {
   const AboutPage = () => (
     <div className="w-full max-w-4xl mx-auto space-y-8">
       {/* Header */}
-      <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+      <div className="text-center space-y-4 px-4">
+        <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
           About Scanix AI
         </h1>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+        <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
           Built by developers, for medical professionals. Learn about our mission and the technology behind our AI-powered brain tumor detection system.
         </p>
       </div>
@@ -246,7 +293,7 @@ function App() {
           <div>
             <h3 className="text-lg font-semibold text-blue-400 mb-3">Frontend</h3>
             <ul className="space-y-2 text-gray-300">
-              <li>• React 18 with modern hooks</li>
+              <li>• React 19 with modern hooks</li>
               <li>• Tailwind CSS for styling</li>
               <li>• Lucide React for icons</li>
               <li>• Responsive design principles</li>
@@ -256,8 +303,8 @@ function App() {
             <h3 className="text-lg font-semibold text-purple-400 mb-3">Backend</h3>
             <ul className="space-y-2 text-gray-300">
               <li>• Flask API with Python</li>
-              <li>• TensorFlow/PyTorch for ML</li>
-              <li>• OpenCV for image processing</li>
+              <li>• Scikit-learn for ML</li>
+              <li>• Pillow for image processing</li>
               <li>• RESTful API architecture</li>
             </ul>
           </div>
@@ -278,7 +325,7 @@ function App() {
               </div>
               <div>
                 <h3 className="font-semibold text-white">AI-Powered Detection</h3>
-                <p className="text-gray-400 text-sm">Deep learning model trained on thousands of medical images</p>
+                <p className="text-gray-400 text-sm">Machine learning model trained on thousands of medical images</p>
               </div>
             </div>
             <div className="flex items-start space-x-3">
@@ -296,7 +343,7 @@ function App() {
               </div>
               <div>
                 <h3 className="font-semibold text-white">Privacy First</h3>
-                <p className="text-gray-400 text-sm">All processing happens locally, no data is stored</p>
+                <p className="text-gray-400 text-sm">Secure cloud processing with no data storage</p>
               </div>
             </div>
           </div>
@@ -338,29 +385,29 @@ function App() {
           <Users className="h-6 w-6" />
           <span>Development Team</span>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Backend Developer */}
-          <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-            <div className="flex items-start space-x-4">
+          <div className="bg-white/5 rounded-2xl p-4 sm:p-6 border border-white/10">
+            <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
               <img 
                 src="https://avatars.githubusercontent.com/u/187887332?v=4" 
                 alt="Manan Panchal"
-                className="w-16 h-16 rounded-full border-2 border-white/20"
+                className="w-16 h-16 rounded-full border-2 border-white/20 mx-auto sm:mx-0"
               />
-              <div className="flex-1">
-                <h3 className="text-xl font-semibold text-white">Manan Panchal</h3>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg sm:text-xl font-semibold text-white">Manan Panchal</h3>
                 <p className="text-blue-400 font-medium mb-2">Backend Developer</p>
-                <p className="text-gray-300 text-sm mb-4">
-                  Experienced backend developer specializing in TensorFlow.js and machine learning model development. Led multiple AI-driven projects focused on financial forecasting and data analysis.
+                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                  Experienced backend developer specializing in Python Flask and machine learning model development. Led multiple AI-driven projects focused on medical imaging and data analysis.
                 </p>
                 <div className="flex flex-col space-y-2 text-sm">
-                  <div className="flex items-center space-x-2 text-gray-400">
-                    <Mail className="h-4 w-4" />
-                    <span>mananpanchal@gmail.com</span>
+                  <div className="flex items-center justify-center sm:justify-start space-x-2 text-gray-400">
+                    <Mail className="h-4 w-4 flex-shrink-0" />
+                    <span className="break-all">mananpanchal@gmail.com</span>
                   </div>
-                  <div className="flex items-center space-x-2 text-gray-400">
-                    <Github className="h-4 w-4" />
-                    <a href="https://github.com/mananjp" className="hover:text-white transition-colors">
+                  <div className="flex items-center justify-center sm:justify-start space-x-2 text-gray-400">
+                    <Github className="h-4 w-4 flex-shrink-0" />
+                    <a href="https://github.com/mananjp" className="hover:text-white transition-colors break-all">
                       github.com/mananjp
                     </a>
                   </div>
@@ -370,27 +417,27 @@ function App() {
           </div>
 
           {/* Frontend Developer */}
-          <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-            <div className="flex items-start space-x-4">
+          <div className="bg-white/5 rounded-2xl p-4 sm:p-6 border border-white/10">
+            <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
               <img 
                 src="https://avatars.githubusercontent.com/u/189432138?v=4" 
                 alt="Ansh Dhanani"
-                className="w-16 h-16 rounded-full border-2 border-white/20"
+                className="w-16 h-16 rounded-full border-2 border-white/20 mx-auto sm:mx-0"
               />
-              <div className="flex-1">
-                <h3 className="text-xl font-semibold text-white">Ansh Dhanani</h3>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg sm:text-xl font-semibold text-white">Ansh Dhanani</h3>
                 <p className="text-purple-400 font-medium mb-2">Frontend Developer</p>
-                <p className="text-gray-300 text-sm mb-4">
+                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
                   Frontend developer with expertise in React.js, Tailwind CSS, and UI/UX design. Passionate about creating intuitive and responsive web applications with modern JavaScript frameworks.
                 </p>
                 <div className="flex flex-col space-y-2 text-sm">
-                  <div className="flex items-center space-x-2 text-gray-400">
-                    <Mail className="h-4 w-4" />
-                    <span>dhananiansh01@gmail.com</span>
+                  <div className="flex items-center justify-center sm:justify-start space-x-2 text-gray-400">
+                    <Mail className="h-4 w-4 flex-shrink-0" />
+                    <span className="break-all">dhananiansh01@gmail.com</span>
                   </div>
-                  <div className="flex items-center space-x-2 text-gray-400">
-                    <Github className="h-4 w-4" />
-                    <a href="https://github.com/Ansh-dhanani" className="hover:text-white transition-colors">
+                  <div className="flex items-center justify-center sm:justify-start space-x-2 text-gray-400">
+                    <Github className="h-4 w-4 flex-shrink-0" />
+                    <a href="https://github.com/Ansh-dhanani" className="hover:text-white transition-colors break-all">
                       github.com/Ansh-dhanani
                     </a>
                   </div>
@@ -475,8 +522,8 @@ function App() {
       </div>
 
       {/* Navigation */}
-      <nav className="relative z-10 p-6">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <nav className="relative z-10 p-4 sm:p-6">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl">
               <Brain className="h-6 w-6 text-white" />
@@ -486,7 +533,7 @@ function App() {
           <div className="flex space-x-1 bg-white/10 backdrop-blur-sm rounded-2xl p-1">
             <button
               onClick={() => setCurrentPage('home')}
-              className={`px-6 py-2 rounded-xl font-medium transition-all ${
+              className={`px-4 sm:px-6 py-2 rounded-xl font-medium transition-all ${
                 currentPage === 'home'
                   ? 'bg-white/20 text-white shadow-lg'
                   : 'text-gray-300 hover:text-white'
@@ -496,7 +543,7 @@ function App() {
             </button>
             <button
               onClick={() => setCurrentPage('about')}
-              className={`px-6 py-2 rounded-xl font-medium transition-all flex items-center space-x-2 ${
+              className={`px-4 sm:px-6 py-2 rounded-xl font-medium transition-all flex items-center space-x-2 ${
                 currentPage === 'about'
                   ? 'bg-white/20 text-white shadow-lg'
                   : 'text-gray-300 hover:text-white'
