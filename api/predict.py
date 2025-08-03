@@ -1,22 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 import json
-import base64
-import io
 import random
-
-try:
-    from PIL import Image
-    import numpy as np
-    import joblib
-    PIL_AVAILABLE = True
-except ImportError:
-    PIL_AVAILABLE = False
-
-def preprocess_image(image):
-    """Preprocess image for model prediction"""
-    img = image.convert('L').resize((64, 64))
-    img_array = np.array(img).flatten()
-    return img_array.reshape(1, -1)
 
 class handler(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
@@ -36,64 +20,16 @@ class handler(BaseHTTPRequestHandler):
                 self.send_error_response({'error': 'No image data provided'}, 400)
                 return
             
-            # Extract base64 image data
-            image_data = data['image']
-            if ',' in image_data:
-                image_data = image_data.split(',')[1]
+            # Mock prediction for Vercel (ML libraries too heavy)
+            has_tumor = random.choice([True, False])
+            confidence = random.uniform(0.75, 0.95)
             
-            if PIL_AVAILABLE:
-                try:
-                    # Decode and process image
-                    image_bytes = base64.b64decode(image_data)
-                    image = Image.open(io.BytesIO(image_bytes))
-                    
-                    # Try to load model, fallback to mock if fails
-                    try:
-                        pipeline = joblib.load('tumor_detector.pkl')
-                        # Use actual ML model
-                        img_features = preprocess_image(image)
-                        prediction = pipeline.predict(img_features)[0]
-                        confidence = pipeline.predict_proba(img_features)[0].max()
-                        
-                        result = {
-                            'prediction': 'Tumor detected' if prediction == 1 else 'No tumor detected',
-                            'has_tumor': bool(prediction),
-                            'confidence': float(confidence),
-                            'model_used': 'actual'
-                        }
-                    except:
-                        # Fallback mock prediction
-                        has_tumor = random.choice([True, False])
-                        confidence = random.uniform(0.75, 0.95)
-                        
-                        result = {
-                            'prediction': 'Tumor detected' if has_tumor else 'No tumor detected',
-                            'has_tumor': has_tumor,
-                            'confidence': confidence,
-                            'model_used': 'mock'
-                        }
-                except:
-                    # If image processing fails, use mock
-                    has_tumor = random.choice([True, False])
-                    confidence = random.uniform(0.75, 0.95)
-                    
-                    result = {
-                        'prediction': 'Tumor detected' if has_tumor else 'No tumor detected',
-                        'has_tumor': has_tumor,
-                        'confidence': confidence,
-                        'model_used': 'mock_fallback'
-                    }
-            else:
-                # PIL not available, use mock
-                has_tumor = random.choice([True, False])
-                confidence = random.uniform(0.75, 0.95)
-                
-                result = {
-                    'prediction': 'Tumor detected' if has_tumor else 'No tumor detected',
-                    'has_tumor': has_tumor,
-                    'confidence': confidence,
-                    'model_used': 'mock_no_pil'
-                }
+            result = {
+                'prediction': 'Tumor detected' if has_tumor else 'No tumor detected',
+                'has_tumor': has_tumor,
+                'confidence': confidence,
+                'model_used': 'mock_vercel'
+            }
             
             self.send_success_response(result)
             
