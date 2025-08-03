@@ -1,0 +1,15 @@
+SCANIX AI - DEPLOYMENT NOTES
+============================
+
+NETLIFY DEPLOYMENT:
+1. Update frontend/.env.production with your Flask API URL
+2. Deploy frontend folder to Netlify
+3. Set build directory to "frontend" and publish directory to "dist"
+
+FLASK API DEPLOYMENT:
+- Deploy api.py to Heroku/Railway/Render
+- Update CORS origins in api.py with your Netlify domain
+- Set FLASK_ENV=production environment variable
+
+QUICK START:
+- Development: Run start.bat (starts both API and frontend)

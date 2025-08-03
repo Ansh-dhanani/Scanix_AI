@@ -5,9 +5,16 @@ import numpy as np
 import joblib
 import io
 import base64
+import os
 
 app = Flask(__name__)
-CORS(app, origins=['http://localhost:5173', 'http://localhost:5174'])
+
+# Configure CORS for production and development
+if os.environ.get('FLASK_ENV') == 'production':
+    # Replace with your actual Netlify domain
+    CORS(app, origins=['https://your-scanix-ai.netlify.app', 'https://*.netlify.app'])
+else:
+    CORS(app, origins=['http://localhost:5173', 'http://localhost:5174'])
 
 # Load the trained model
 pipeline = joblib.load('tumor_detector.pkl')
@@ -44,4 +51,6 @@ def predict():
         return jsonify({'error': str(e)}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    debug = os.environ.get('FLASK_ENV') != 'production'
+    app.run(debug=debug, host='0.0.0.0', port=port)
