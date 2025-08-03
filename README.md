@@ -5,14 +5,14 @@
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Netlify-00C7B7?style=for-the-badge)](https://scanix-ai.netlify.app)
 [![API Status](https://img.shields.io/badge/🔥_API-Vercel-000000?style=for-the-badge)](https://scanix-ai.vercel.app/api/health)
 [![Made with React](https://img.shields.io/badge/⚛️_Made_with-React_19-61DAFB?style=for-the-badge)](https://reactjs.org/)
-
+<pre>
 ███████╗ ██████╗ █████╗ ███╗   ██╗██╗██╗  ██╗
 ██╔════╝██╔════╝██╔══██╗████╗  ██║██║╚██╗██╔╝
 ███████╗██║     ███████║██╔██╗ ██║██║ ╚███╔╝ 
 ╚════██║██║     ██╔══██║██║╚██╗██║██║ ██╔██╗
 ███████║╚██████╗██║  ██║██║ ╚████║██║██╔╝ ██╗
 ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝
-
+</pre>
 ## 💀 What's This About?
 
 Yo, we built an AI that can spot brain tumors faster than you can say "no cap" 💯. Upload your brain scan, get results in seconds. It's giving main character energy fr.
