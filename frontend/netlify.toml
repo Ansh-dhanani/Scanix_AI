@@ -3,7 +3,7 @@
   publish = "dist"
 
 [build.environment]
-  VITE_API_URL = "http://localhost:5000"
+  VITE_API_URL = "https://scanix-ai.vercel.app/api"
   NODE_VERSION = "18"
 
 # Handle client-side routing
