@@ -1,0 +1,73 @@
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.upload-section {
+  margin: 2rem 0;
+}
+
+.file-input {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.preview {
+  margin: 2rem 0;
+}
+
+.preview-image {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.predict-btn {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.75rem 2rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.predict-btn:hover {
+  background: #0056b3;
+}
+
+.predict-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.result {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
+
+.result.tumor {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.result.no-tumor {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.error {
+  color: #dc3545;
+}
