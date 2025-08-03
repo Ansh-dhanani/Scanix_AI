@@ -1,18 +1,16 @@
-from flask import Flask, jsonify
-from flask_cors import CORS
+from http.server import BaseHTTPRequestHandler
+import json
 
-app = Flask(__name__)
-CORS(app)
-
-def handler(request):
-    """Vercel serverless function handler"""
-    with app.app_context():
-        return app.full_dispatch_request()
-
-@app.route('/', methods=['GET'])
-def health():
-    """Health check endpoint"""
-    return jsonify({
-        'status': 'API is running',
-        'model_loaded': True
-    })
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Content-Type', 'application/json')
+        self.end_headers()
+        
+        response = {
+            'status': 'API is running',
+            'model_loaded': True
+        }
+        
+        self.wfile.write(json.dumps(response).encode())
