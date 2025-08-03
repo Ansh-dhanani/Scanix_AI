@@ -50,7 +50,7 @@ Vercel         - Serverless deployment king 👑
 ## 🚀 Quick Start (Get It Running)
 
 ### Option 1: Just Use It (Recommended)
-Visit [scanix-ai.netlify.app](https://scanix-ai.netlify.app) and start uploading! No setup needed bestie ✨
+Visit [scanix-ai.netlify.app](https://scanixai.netlify.app/) and start uploading! No setup needed bestie ✨
 
 ### Option 2: Run It Locally (For Devs)
 
