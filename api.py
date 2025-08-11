@@ -20,9 +20,10 @@ except Exception as e:
 
 def preprocess_image(image):
     """Preprocess image for model prediction"""
+    # Convert to grayscale and resize to match training data
     img = image.convert('L').resize((64, 64))
-    img_array = np.array(img).flatten()
-    return img_array.reshape(1, -1)
+    img_array = np.array(img, dtype=np.float32) / 255.0  # Normalize to 0-1
+    return img_array.flatten().reshape(1, -1)
 
 @app.route('/', methods=['GET'])
 def home():
@@ -70,7 +71,11 @@ def predict():
         # Use ML model for prediction
         img_features = preprocess_image(image)
         prediction = pipeline.predict(img_features)[0]
-        confidence = pipeline.predict_proba(img_features)[0].max()
+        probabilities = pipeline.predict_proba(img_features)[0]
+        confidence = probabilities.max()
+        
+        # Debug logging
+        print(f"Debug - Prediction: {prediction}, Probabilities: {probabilities}, Confidence: {confidence}")
         
         result = {
             'prediction': 'Tumor detected' if prediction == 1 else 'No tumor detected',

@@ -32,7 +32,8 @@ def load_and_preprocess_data():
     for sample in dataset:
         label = sample["label"]
         img = sample["image"].convert("L").resize(TARGET_IMAGE_SIZE)
-        X.append(np.array(img).flatten())
+        img_array = np.array(img, dtype=np.float32) / 255.0  # Normalize to 0-1
+        X.append(img_array.flatten())
         y.append(label)
         label_counter[label] += 1
         
