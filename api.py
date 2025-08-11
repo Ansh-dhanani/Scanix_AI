@@ -64,30 +64,19 @@ def predict():
         image_bytes = base64.b64decode(image_data)
         image = Image.open(io.BytesIO(image_bytes))
         
-        if pipeline is not None:
-            # Use actual ML model
-            img_features = preprocess_image(image)
-            prediction = pipeline.predict(img_features)[0]
-            confidence = pipeline.predict_proba(img_features)[0].max()
-            
-            result = {
-                'prediction': 'Tumor detected' if prediction == 1 else 'No tumor detected',
-                'has_tumor': bool(prediction),
-                'confidence': float(confidence),
-                'model_used': 'actual'
-            }
-        else:
-            # Fallback mock prediction
-            import random
-            has_tumor = random.choice([True, False])
-            confidence = random.uniform(0.75, 0.95)
-            
-            result = {
-                'prediction': 'Tumor detected' if has_tumor else 'No tumor detected',
-                'has_tumor': has_tumor,
-                'confidence': confidence,
-                'model_used': 'mock'
-            }
+        if pipeline is None:
+            return jsonify({'error': 'Model not available'}), 503
+        
+        # Use ML model for prediction
+        img_features = preprocess_image(image)
+        prediction = pipeline.predict(img_features)[0]
+        confidence = pipeline.predict_proba(img_features)[0].max()
+        
+        result = {
+            'prediction': 'Tumor detected' if prediction == 1 else 'No tumor detected',
+            'has_tumor': bool(prediction),
+            'confidence': float(confidence)
+        }
         
         return jsonify(result)
         
