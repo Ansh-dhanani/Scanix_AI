@@ -1,0 +1,23 @@
+@echo off
+echo Starting Brain Tumor Classifier...
+
+echo Installing Python dependencies...
+pip install -r requirements.txt
+
+echo Starting Flask API server...
+start "Flask API" python api_server.py
+
+echo Waiting for API server to start...
+timeout /t 5
+
+echo Installing frontend dependencies...
+cd frontend
+npm install
+
+echo Starting Vite development server...
+start "Vite Frontend" npm run dev
+
+echo Both servers are starting...
+echo Flask API: http://localhost:5000
+echo Vite Frontend: http://localhost:3000
+pause
