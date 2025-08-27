@@ -4,8 +4,8 @@
 // 2. Template ID: Create a template in EmailJS > Email Templates  
 // 3. User ID: Find in EmailJS > Account > API Keys (Public Key - should start with "user_")
 export const emailjsConfig = {
-  serviceID: import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_z8jmf2s',
-  templateID: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_89453mq',
-  userID: import.meta.env.VITE_EMAILJS_USER_ID || 'itEg3-s2Rtf9WJEwW',
-  toEmail: import.meta.env.VITE_CONTACT_EMAIL || 'dhananiansh01@gmail.com'
+  serviceID: import.meta.env.VITE_EMAILJS_SERVICE_ID ,
+  templateID: import.meta.env.VITE_EMAILJS_TEMPLATE_ID ,
+  userID: import.meta.env.VITE_EMAILJS_USER_ID ,
+  toEmail: import.meta.env.VITE_CONTACT_EMAIL 
 };
