@@ -1,17 +1,13 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Upload,
   Brain,
   Sparkles,
   Code,
-  Zap,
   CheckCircle,
-  Shield,
-  Activity,
   Users,
   Mail,
   Github,
-  AlertCircle,
   ArrowLeft,
   Send,
   User,
@@ -20,6 +16,7 @@ import {
 import emailjs from 'emailjs-com';
 import { emailjsConfig } from './config/emailjs';
 import LightRays from "./blocks/Backgrounds/LightRays/LightRays";
+import { gsap } from "gsap";
 
 // --- Glassmorphism Wrapper Component ---
 const GlassWrapper = ({
@@ -397,7 +394,7 @@ const ContactPage = ({ onBack }) => {
             <div className="flex items-center space-x-2 text-gray-300">
               <Mail className="h-4 w-4" />
               <a href="mailto:manan@gmail.com" className="text-sm hover:text-blue-400 transition-colors">
-                manan@gmail.com
+                mananjpanchal11@gmail.com
               </a>
             </div>
           </div>
@@ -448,13 +445,21 @@ const AboutPage = ({ onBack }) => (
     <GlassWrapper className="p-6">
       <h2 className="text-xl font-semibold text-white mb-3 flex items-center space-x-2">
         <Brain className="h-5 w-5" />
-        <span>Our Mission</span>
+        <span>Our Mission & Technology</span>
       </h2>
-      <p className="text-gray-300 leading-relaxed">
+      <p className="text-gray-300 leading-relaxed mb-4">
         Scanix AI democratizes medical imaging analysis through cutting-edge
         artificial intelligence, providing healthcare professionals with fast,
-        accurate tools for brain tumor detection.
+        accurate tools for brain tumor detection. Our platform leverages deep
+        learning to analyze MRI scans and provide instant predictions with
+        confidence scores.
       </p>
+      <div className="space-y-3 text-sm text-gray-400">
+        <p>• <span className="text-blue-400">Real-time Analysis:</span> Process brain scans instantly using our trained ResNet-18 model</p>
+        <p>• <span className="text-purple-400">High Accuracy:</span> Achieve reliable tumor detection with advanced neural networks</p>
+        <p>• <span className="text-green-400">User-Friendly Interface:</span> Intuitive React-based frontend with modern design</p>
+        <p>• <span className="text-amber-400">Secure Communication:</span> Contact form integration with EmailJS for direct communication</p>
+      </div>
     </GlassWrapper>
 
     {/* Technology */}
@@ -463,23 +468,65 @@ const AboutPage = ({ onBack }) => (
         <Code className="h-5 w-5" />
         <span>Technology Stack</span>
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <h3 className="text-lg font-semibold text-blue-400 mb-2">Frontend</h3>
-          <ul className="space-y-1 text-gray-300 text-sm">
-            <li>• React 19 with modern hooks</li>
-            <li>• Tailwind CSS for styling</li>
-            <li>• Responsive design</li>
+          <h3 className="text-lg font-semibold text-blue-400 mb-3">Frontend</h3>
+          <ul className="space-y-2 text-gray-300 text-sm">
+            <li className="flex items-center">
+              <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+              <span>React 19 with modern hooks and state management</span>
+            </li>
+            <li className="flex items-center">
+              <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+              <span>Tailwind CSS for responsive and modern styling</span>
+            </li>
+            <li className="flex items-center">
+              <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+              <span>Vite for fast development and building</span>
+            </li>
+            <li className="flex items-center">
+              <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+              <span>EmailJS for contact form integration</span>
+            </li>
+            <li className="flex items-center">
+              <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+              <span>Lucide React for modern iconography</span>
+            </li>
+            <li className="flex items-center">
+              <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+              <span>React Bits LightRays component for dynamic background effects</span>
+            </li>
           </ul>
         </div>
         <div>
-          <h3 className="text-lg font-semibold text-purple-400 mb-2">
-            Backend
+          <h3 className="text-lg font-semibold text-purple-400 mb-3">
+            Backend & AI
           </h3>
-          <ul className="space-y-1 text-gray-300 text-sm">
-            <li>• Flask API with Python</li>
-            <li>• Scikit-learn for ML</li>
-            <li>• RESTful architecture</li>
+          <ul className="space-y-2 text-gray-300 text-sm">
+            <li className="flex items-center">
+              <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
+              <span>Flask RESTful API with Python</span>
+            </li>
+            <li className="flex items-center">
+              <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
+              <span>PyTorch for deep learning model implementation</span>
+            </li>
+            <li className="flex items-center">
+              <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
+              <span>ResNet-18 architecture for brain tumor classification</span>
+            </li>
+            <li className="flex items-center">
+              <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
+              <span>Flask-CORS for cross-origin requests</span>
+            </li>
+            <li className="flex items-center">
+              <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
+              <span>Pillow for image processing and handling</span>
+            </li>
+            <li className="flex items-center">
+              <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
+              <span>Scikit-learn for machine learning utilities</span>
+            </li>
           </ul>
         </div>
       </div>
@@ -620,6 +667,34 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState("home");
   const api = useTumorApi();
+  const appRef = useRef(null);
+
+  useEffect(() => {
+    // GSAP animations on component mount and page changes
+    if (appRef.current) {
+      const ctx = gsap.context(() => {
+        // Animate main content with fade in and move up
+        gsap.fromTo('.animate-content', 
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", stagger: 0.2 }
+        );
+        
+        // Animate navigation with slight delay
+        gsap.fromTo('.animate-nav',
+          { y: -30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 }
+        );
+        
+        // Animate background elements
+        gsap.fromTo('.animate-bg',
+          { opacity: 0 },
+          { opacity: 1, duration: 1.5, ease: "power2.inOut" }
+        );
+      }, appRef.current);
+      
+      return () => ctx.revert();
+    }
+  }, [currentPage]);
 
   const handlePredict = async () => {
     if (!selectedFile) {
@@ -769,25 +844,28 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
+    <div
+      className="min-h-screen bg-black relative overflow-hidden"
+      ref={appRef}
+    >
       {/* Light Ray Background */}
-      <div className="absolute z-[0] w-full h-full">
+      <div className="absolute z-[0]  w-full h-full animate-bg">
         <LightRays
           raysOrigin="top-center"
           raysColor="#00ffff"
           raysSpeed={1.5}
           lightSpread={0.8}
-          rayLength={1.2}
+          rayLength={1.6}
           followMouse={true}
           mouseInfluence={0.1}
-          noiseAmount={0.1}
+          noiseAmount={0.3}
           distortion={0.05}
-          className="fixed inset-0 pointer-events-none z-0"
+          className="fixed inset-0 pointer-events-none z-0 opacity-70"
         />
       </div>
       <div className="relative z-10 max-w-4xl mx-auto px-4 py-6">
         {/* Navigation */}
-        <GlassWrapper variant="secondary" className="p-3 px-9 mb-6">
+        <GlassWrapper variant="secondary" className="p-3 px-9 mb-6 animate-nav">
           <nav className="flex items-center justify-between">
             <button
               onClick={() => setCurrentPage("home")}
@@ -813,7 +891,7 @@ function App() {
           </nav>
         </GlassWrapper>
 
-        <div className="space-y-6">{renderPage()}</div>
+        <div className="space-y-6 animate-content">{renderPage()}</div>
       </div>
     </div>
   );
