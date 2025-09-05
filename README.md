@@ -131,7 +131,7 @@ We're always down for contributions! Here's how:
 ## 📱 Connect With Us
 
 - 💼 **LinkedIn:** Hit us up for collabs
-- 📧 **Email:** mananpanchal@gmail.com | dhananiansh01@gmail.com
+- 📧 **Email:** mananpanchal11@gmail.com | dhananiansh01@gmail.com
 - 🐙 **GitHub:** Follow for more projects
 
 ## 📄 License
