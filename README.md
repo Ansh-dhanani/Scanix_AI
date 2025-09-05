@@ -22,7 +22,7 @@ We built an AI that can spot brain tumors faster than you can say. Upload your b
 
 ## ✨ Features That Hit Different
 
-- 🎯 **98% Accuracy** - This AI doesn't miss
+- 🎯 **96% Accuracy** - This AI doesn't miss
 - ⚡ **Lightning Fast** - Results in seconds, no waiting around
 - 📱 **Mobile First** - Looks clean on every device
 - 🔒 **Privacy King** - Your data stays yours, period
