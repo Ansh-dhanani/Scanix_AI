@@ -1,4 +1,4 @@
-# 🧠 Scanix AI - Brain Tumor Detection That Actually Slaps
+# 🧠 Scanix AI - Brain Tumor Detection
 
 > *When AI meets healthcare and it's actually fire* 🔥
 
