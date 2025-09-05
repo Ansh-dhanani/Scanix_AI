@@ -16,9 +16,9 @@
 </pre>
 ## 💀 What's This About?
 
-Yo, we built an AI that can spot brain tumors faster than you can say "no cap" 💯. Upload your brain scan, get results in seconds. It's giving main character energy fr.
+We built an AI that can spot brain tumors faster than you can say. Upload your brain scan, get results in seconds.
 
-**TL;DR:** AI-powered brain tumor detection with 98% accuracy. Built different. 
+**TL;DR:** AI-powered brain tumor detection with 96% accuracy. Built different. 
 
 ## ✨ Features That Hit Different
 
@@ -33,24 +33,25 @@ Yo, we built an AI that can spot brain tumors faster than you can say "no cap" �
 
 ### Frontend (The Pretty Part)
 ```
-React 19        - Because we stay current 💅
-Tailwind CSS    - Making it look expensive 💎
-Lucide Icons    - Clean icons that don't miss 🎯
-Vite           - Build tool that's actually fast ⚡
+React 19        - Because we stay current 
+Tailwind CSS    - Making it look expensive 
+Lucide Icons    - Clean icons that don't miss 
+Vite           - Build tool that's actually fast 
 ```
 
 ### Backend (The Brain)
 ```
-Python Flask    - Simple but powerful 🐍
-Scikit-learn   - ML that actually works 🤖
-Pillow         - Image processing queen 🖼️
-Vercel         - Serverless deployment king 👑
+datasets        - Hugging Face
+Python Flask    - Simple but powerful 
+Scikit-learn   - ML that actually works 
+Pillow         - Image processing queen
+Vercel         - Serverless deployment king 
 ```
 
 ## 🚀 Quick Start (Get It Running)
 
 ### Option 1: Just Use It (Recommended)
-Visit [scanix-ai.netlify.app](https://scanixai.netlify.app/) and start uploading! No setup needed bestie ✨
+Visit [scanix-ai.netlify.app](https://scanixai.netlify.app/) and start uploading! No setup needed 
 
 ### Option 2: Run It Locally (For Devs)
 
